@@ -50,12 +50,20 @@ export default function NewArrivals() {
 
   // SEARCH FILTER
 
-  const filteredProducts =
-    products.filter((product) =>
-      product.title
-        .toLowerCase()
-        .includes(search.toLowerCase())
-    );
+ const filteredProducts = [
+  ...new Map(
+    products.map((item) => [
+      item.title,
+      item,
+    ])
+  ).values(),
+]
+  .filter((product: any) =>
+    product.title
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  )
+  .slice(0, 10);
 
   return (
 
@@ -195,6 +203,16 @@ export default function NewArrivals() {
           ))}
 
         </div>
+        <div className="flex justify-center mt-10">
+
+  <Link
+    href="/products"
+    className="bg-[#FFA689] text-white px-8 py-3 rounded-2xl font-semibold hover:scale-105 transition"
+  >
+    View All Products →
+  </Link>
+
+</div>
 
       </div>
 
