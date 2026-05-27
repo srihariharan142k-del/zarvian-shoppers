@@ -1,37 +1,30 @@
-import type { Metadata } from "next";
-
 import "./globals.css";
 
-import Navbar from "@/components/Navbar";
+import type { Metadata } from "next";
+
+import { CartProvider } from "@/context/CartContext";
 
 export const metadata: Metadata = {
-
-  title:
-    "Zarvian Store 🧸 | Premium Toys & Gifts",
-
-  description:
-    "Shop premium toys, diecast cars, kids gifts, teddy bears and more with fast delivery across India.",
-
+  title: "Zarvian Shoppers",
+  description: "Premium Shopping Website",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-
+}) {
   return (
+    <html lang="en">
+      <body>
 
-    <html lang="en" suppressHydrationWarning>
+        <CartProvider>
 
-      <body className="transition-colors duration-500">
+          {children}
 
-        <Navbar />
-
-        {children}
+        </CartProvider>
 
       </body>
-
     </html>
   );
 }
