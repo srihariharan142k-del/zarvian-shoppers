@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: "Premium Shopping Website",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: {
